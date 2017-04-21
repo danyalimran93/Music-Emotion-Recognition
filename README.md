@@ -1,4 +1,6 @@
-# Music Emotion Recognition - To be Updated Soon!
+# Music Emotion Recognition
+
+# To be Updated at the end of April or start of May!
 
 ### - Introduction
 
