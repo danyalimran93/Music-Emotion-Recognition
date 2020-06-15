@@ -1,5 +1,7 @@
 # Music Emotion Recognition
 
+YouTube Video Explaining about the Repository: https://youtu.be/z00bbA2FpHc
+
 ### - Introduction
 
 The study of music and emotion seeks to understand the psychological relationship between human affect and music. It is a branch of music psychology with numerous areas of study, including the nature of emotional reactions to music, how characteristics of the listener may determine which emotions are felt, and which components of a musical composition or performance may elicit certain reactions. [1]
