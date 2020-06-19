@@ -1,6 +1,6 @@
 # Music Emotion Recognition
 
-YouTube Video Explaining about the Repository: https://youtu.be/z00bbA2FpHc
+A better explanation of the repo and problem domain: https://youtu.be/5b5unjdikPo
 
 ### - Introduction
 
