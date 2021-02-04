@@ -1,6 +1,6 @@
 # Music Emotion Recognition
 
-A better explanation of the repo and problem domain: https://youtu.be/5b5unjdikPo
+A video explanation of the repo and research problem domain: https://youtu.be/5b5unjdikPo
 
 ### - Introduction
 
