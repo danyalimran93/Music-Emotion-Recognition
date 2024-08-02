@@ -40,9 +40,9 @@ def extract_feature(path):
     mfcc_delta_mean = pd.Series()
     mfcc_delta_std = pd.Series()
     mfcc_delta_var = pd.Series()
-    rmse_mean = pd.Series()
-    rmse_std = pd.Series()
-    rmse_var = pd.Series()
+    rms_mean = pd.Series()
+    rms_std = pd.Series()
+    rms_var = pd.Series()
     cent_mean = pd.Series()
     cent_std = pd.Series()
     cent_var = pd.Series()
@@ -92,7 +92,7 @@ def extract_feature(path):
         chroma_cq = librosa.feature.chroma_cqt(y=y, sr=sr)
         chroma_cens = librosa.feature.chroma_cens(y=y, sr=sr)
         melspectrogram = librosa.feature.melspectrogram(y=y, sr=sr)
-        rmse = librosa.feature.rmse(y=y)
+        rms = librosa.feature.rms(y=y)
         cent = librosa.feature.spectral_centroid(y=y, sr=sr)
         spec_bw = librosa.feature.spectral_bandwidth(y=y, sr=sr)
         contrast = librosa.feature.spectral_contrast(S=S, sr=sr)
@@ -110,61 +110,61 @@ def extract_feature(path):
         frames_to_time = librosa.frames_to_time(onset_frames[:20], sr=sr)
         
         # Transforming Features
-        songname_vector.set_value(id, line)  # song name
-        tempo_vector.set_value(id, tempo)  # tempo
-        total_beats.set_value(id, sum(beats))  # beats
-        average_beats.set_value(id, np.average(beats))
-        chroma_stft_mean.set_value(id, np.mean(chroma_stft))  # chroma stft
-        chroma_stft_std.set_value(id, np.std(chroma_stft))
-        chroma_stft_var.set_value(id, np.var(chroma_stft))
-        chroma_cq_mean.set_value(id, np.mean(chroma_cq))  # chroma cq
-        chroma_cq_std.set_value(id, np.std(chroma_cq))
-        chroma_cq_var.set_value(id, np.var(chroma_cq))
-        chroma_cens_mean.set_value(id, np.mean(chroma_cens))  # chroma cens
-        chroma_cens_std.set_value(id, np.std(chroma_cens))
-        chroma_cens_var.set_value(id, np.var(chroma_cens))
-        mel_mean.set_value(id, np.mean(melspectrogram))  # melspectrogram
-        mel_std.set_value(id, np.std(melspectrogram))
-        mel_var.set_value(id, np.var(melspectrogram))
-        mfcc_mean.set_value(id, np.mean(mfcc))  # mfcc
-        mfcc_std.set_value(id, np.std(mfcc))
-        mfcc_var.set_value(id, np.var(mfcc))
-        mfcc_delta_mean.set_value(id, np.mean(mfcc_delta))  # mfcc delta
-        mfcc_delta_std.set_value(id, np.std(mfcc_delta))
-        mfcc_delta_var.set_value(id, np.var(mfcc_delta))
-        rmse_mean.set_value(id, np.mean(rmse))  # rmse
-        rmse_std.set_value(id, np.std(rmse))
-        rmse_var.set_value(id, np.var(rmse))
-        cent_mean.set_value(id, np.mean(cent))  # cent
-        cent_std.set_value(id, np.std(cent))
-        cent_var.set_value(id, np.var(cent))
-        spec_bw_mean.set_value(id, np.mean(spec_bw))  # spectral bandwidth
-        spec_bw_std.set_value(id, np.std(spec_bw))
-        spec_bw_var.set_value(id, np.var(spec_bw))
-        contrast_mean.set_value(id, np.mean(contrast))  # contrast
-        contrast_std.set_value(id, np.std(contrast))
-        contrast_var.set_value(id, np.var(contrast))
-        rolloff_mean.set_value(id, np.mean(rolloff))  # rolloff
-        rolloff_std.set_value(id, np.std(rolloff))
-        rolloff_var.set_value(id, np.var(rolloff))
-        poly_mean.set_value(id, np.mean(poly_features))  # poly features
-        poly_std.set_value(id, np.std(poly_features))
-        poly_var.set_value(id, np.var(poly_features))
-        tonnetz_mean.set_value(id, np.mean(tonnetz))  # tonnetz
-        tonnetz_std.set_value(id, np.std(tonnetz))
-        tonnetz_var.set_value(id, np.var(tonnetz))
-        zcr_mean.set_value(id, np.mean(zcr))  # zero crossing rate
-        zcr_std.set_value(id, np.std(zcr))
-        zcr_var.set_value(id, np.var(zcr))
-        harm_mean.set_value(id, np.mean(harmonic))  # harmonic
-        harm_std.set_value(id, np.std(harmonic))
-        harm_var.set_value(id, np.var(harmonic))
-        perc_mean.set_value(id, np.mean(percussive))  # percussive
-        perc_std.set_value(id, np.std(percussive))
-        perc_var.set_value(id, np.var(percussive))
-        frame_mean.set_value(id, np.mean(frames_to_time))  # frames
-        frame_std.set_value(id, np.std(frames_to_time))
-        frame_var.set_value(id, np.var(frames_to_time))
+        songname_vector._set_value(id, line)  # song name
+        tempo_vector._set_value(id, tempo)  # tempo
+        total_beats._set_value(id, sum(beats))  # beats
+        average_beats._set_value(id, np.average(beats))
+        chroma_stft_mean._set_value(id, np.mean(chroma_stft))  # chroma stft
+        chroma_stft_std._set_value(id, np.std(chroma_stft))
+        chroma_stft_var._set_value(id, np.var(chroma_stft))
+        chroma_cq_mean._set_value(id, np.mean(chroma_cq))  # chroma cq
+        chroma_cq_std._set_value(id, np.std(chroma_cq))
+        chroma_cq_var._set_value(id, np.var(chroma_cq))
+        chroma_cens_mean._set_value(id, np.mean(chroma_cens))  # chroma cens
+        chroma_cens_std._set_value(id, np.std(chroma_cens))
+        chroma_cens_var._set_value(id, np.var(chroma_cens))
+        mel_mean._set_value(id, np.mean(melspectrogram))  # melspectrogram
+        mel_std._set_value(id, np.std(melspectrogram))
+        mel_var._set_value(id, np.var(melspectrogram))
+        mfcc_mean._set_value(id, np.mean(mfcc))  # mfcc
+        mfcc_std._set_value(id, np.std(mfcc))
+        mfcc_var._set_value(id, np.var(mfcc))
+        mfcc_delta_mean._set_value(id, np.mean(mfcc_delta))  # mfcc delta
+        mfcc_delta_std._set_value(id, np.std(mfcc_delta))
+        mfcc_delta_var._set_value(id, np.var(mfcc_delta))
+        rms_mean._set_value(id, np.mean(rms))  # rms
+        rms_std._set_value(id, np.std(rms))
+        rms_var._set_value(id, np.var(rms))
+        cent_mean._set_value(id, np.mean(cent))  # cent
+        cent_std._set_value(id, np.std(cent))
+        cent_var._set_value(id, np.var(cent))
+        spec_bw_mean._set_value(id, np.mean(spec_bw))  # spectral bandwidth
+        spec_bw_std._set_value(id, np.std(spec_bw))
+        spec_bw_var._set_value(id, np.var(spec_bw))
+        contrast_mean._set_value(id, np.mean(contrast))  # contrast
+        contrast_std._set_value(id, np.std(contrast))
+        contrast_var._set_value(id, np.var(contrast))
+        rolloff_mean._set_value(id, np.mean(rolloff))  # rolloff
+        rolloff_std._set_value(id, np.std(rolloff))
+        rolloff_var._set_value(id, np.var(rolloff))
+        poly_mean._set_value(id, np.mean(poly_features))  # poly features
+        poly_std._set_value(id, np.std(poly_features))
+        poly_var._set_value(id, np.var(poly_features))
+        tonnetz_mean._set_value(id, np.mean(tonnetz))  # tonnetz
+        tonnetz_std._set_value(id, np.std(tonnetz))
+        tonnetz_var._set_value(id, np.var(tonnetz))
+        zcr_mean._set_value(id, np.mean(zcr))  # zero crossing rate
+        zcr_std._set_value(id, np.std(zcr))
+        zcr_var._set_value(id, np.var(zcr))
+        harm_mean._set_value(id, np.mean(harmonic))  # harmonic
+        harm_std._set_value(id, np.std(harmonic))
+        harm_var._set_value(id, np.var(harmonic))
+        perc_mean._set_value(id, np.mean(percussive))  # percussive
+        perc_std._set_value(id, np.std(percussive))
+        perc_var._set_value(id, np.var(percussive))
+        frame_mean._set_value(id, np.mean(frames_to_time))  # frames
+        frame_std._set_value(id, np.std(frames_to_time))
+        frame_var._set_value(id, np.var(frames_to_time))
         
         print(songname)
         id = id+1
@@ -192,9 +192,9 @@ def extract_feature(path):
     feature_set['mfcc_delta_mean'] = mfcc_delta_mean  # mfcc delta
     feature_set['mfcc_delta_std'] = mfcc_delta_std
     feature_set['mfcc_delta_var'] = mfcc_delta_var
-    feature_set['rmse_mean'] = rmse_mean  # rmse
-    feature_set['rmse_std'] = rmse_std
-    feature_set['rmse_var'] = rmse_var
+    feature_set['rms_mean'] = rms_mean  # rms
+    feature_set['rms_std'] = rms_std
+    feature_set['rms_var'] = rms_var
     feature_set['cent_mean'] = cent_mean  # cent
     feature_set['cent_std'] = cent_std
     feature_set['cent_var'] = cent_var
