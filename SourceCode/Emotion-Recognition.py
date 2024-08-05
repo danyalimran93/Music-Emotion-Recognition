@@ -1,35 +1,35 @@
-"""
-@author: Danyal
-
-The following code classifies piece of music as one of 
-the four emotions mentioned in the document
-"""
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 
-data = pd.read_csv('Dataset/Emotion_data.csv')
-feature = data.ix[:, 'tempo':]
+# Load the DataFrame
+dataframe = pd.read_csv('Emotion_features.csv')
+
+# Print column names to identify the correct label column
+print(dataframe)
+
+# Normalize features
+feature = dataframe.loc[:, 'tempo':]
 featureName = list(feature)
-color = ['red' if l==1 else 'green' if l==2 else 'blue' if l==3 else 'orange' for l in data['label']]
+color = ['red' if l==1 else 'green' if l==2 else 'blue' if l==3 else 'orange' for l in dataframe["label"]]
 
 for name in featureName:
     feature[name] = (feature[name]-feature[name].min())/(feature[name].max()-feature[name].min())
 
 plt.style.use('ggplot')
 
-array = np.array(data)
+array = np.array(dataframe)
 
 features = feature.values
-labels = data.ix[:, 'class'].dropna()
+labels = dataframe.loc[:, label_column].dropna()
+
+# Train/test split
 test_size = 0.20
 random_seed = 7
-
 train_d, test_d, train_l, test_l = train_test_split(features, labels, test_size=test_size, random_state=random_seed)
 
 result = []
